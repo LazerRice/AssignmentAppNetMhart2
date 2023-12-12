@@ -11,8 +11,9 @@ internal class CustomerService
 
         Console.WriteLine("Coustomer Service: Add Customer To List");
         customerRepy.AddToList(customer);
-
         Console.ReadKey();
+    }
 
-    }
-    }
+    public IEnumerable<Customer> GetAll() => customerRepy.GetAllFromList();
+}
+
