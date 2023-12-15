@@ -2,6 +2,7 @@
 using AssignmentAppNetMhart2.Models;
 
 
+
 var customerService = new CustomerService();
 customerService.AddCustomer(new Customer { Name = "Mhart Canoy" });
 customerService.AddCustomer(new Customer { Name = "Kurt Roland" });

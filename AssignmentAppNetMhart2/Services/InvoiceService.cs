@@ -10,7 +10,7 @@ internal class InvoiceService
 
         Console.WriteLine("Invoice Service: Get All Customers");
         foreach (var customer in customerRepy.GetAllFromList())
-            Console.WriteLine($"{customer.Id - 3} {customer.Name}");
+            Console.WriteLine($"{customer.Id, - 3} {customer.Name}");
 
         Console.ReadKey();
 

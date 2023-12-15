@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Net.Http.Json;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using AssignmentAppNetMhart2.Models;
 using AssignmentAppNetMhart2.Repositories;
 
@@ -32,14 +30,14 @@ internal class CustomerService
 
     }
 
-    public IEnumerable<Customer> GetAll() => customerRepy.GetAllFromList(); 
+    public IEnumerable<CustomerRepy> GetAll() => CustomerRepy.GetAllFromList(); 
 
-    public IEnumerable<Customer> GetCustomerFromlist()
+    public IEnumerable<CustomerRepy> GetCustomerFromlist()
     {
         try
         {
                 var content = FileSetup.GetContentFromFile();
-                _customerList = JsonConverter.DeserializeObject<List<Coustmer>>(content);
+                _customerList = JsonConverter.DeserializeObject<List<Customer>>(content);
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
 

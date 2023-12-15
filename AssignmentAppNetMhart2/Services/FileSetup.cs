@@ -9,7 +9,7 @@ public interface IFileSetup
 
 public class FileSetup(string fileSetup) : IFileSetup
 {
-    private readonly string _filePath = fileSetup;
+    private readonly string _filePath;
 
     public string GetContentFromFile()
     {
