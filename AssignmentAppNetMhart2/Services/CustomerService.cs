@@ -7,11 +7,11 @@ namespace AssignmentAppNetMhart2.Services;
 internal class CustomerService
 {
     private readonly CustomerRepy customerRepy = new CustomerRepy();
-    private readonly FileSetup _fileSetup = new FileSetup(@"C:\ESS\C#Sharp\content.json");
+    private readonly FileService _fileSetup = new FileService(@"C:\ESS\C#Sharp\content.json");
     private readonly List<Customer> _customerList = new List<Customer>();
 
     
-    public void AddCustomer(Customer customer)
+    public void AddCustomerToList(Customer customer)
     {
 
         Console.WriteLine($"Coustomer Service: Add Customer {customer.Name} To List");
@@ -23,7 +23,7 @@ internal class CustomerService
             if (!_customerList.Any(x => x.Email == customer.Email))
             {
                 _customerList.Add(customer);
-                _fileSetup.SaveContenToFile(JsonContent.SerializeObject(_customerList));
+                _fileSetup.SaveContentToFile(Json);
             }
         }
         catch (Exception ex) { Debug.WriteLine(ex.Message); }
