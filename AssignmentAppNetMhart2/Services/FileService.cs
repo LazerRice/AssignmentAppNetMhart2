@@ -1,4 +1,7 @@
-﻿using System.Diagnostics;
+﻿//Denna kod är till för att vi ska kunna hämta och skriva information till en file. För att kunna spara och logga information smidigare. Det sparas till en Json. 
+// Vi har en "try catch" på båda förfrågningarna. Detta är för att snabb kunna fånga upp eventuella fel.  
+
+using System.Diagnostics;
 
 namespace AssignmentAppNetMhart2.Services;
 
