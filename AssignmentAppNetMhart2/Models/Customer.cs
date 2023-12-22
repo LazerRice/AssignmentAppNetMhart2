@@ -1,11 +1,6 @@
-﻿namespace AssignmentAppNetMhart2.Models;
+﻿using AssignmentAppNetMhart2.Interfaces;
+namespace AssignmentAppNetMhart2.Models;
 
-public interface ICustomer
-{
-    string Email { get; set; }
-    string FirstName { get; set; }
-    string LastName { get; set; }
-}
 
 public class Customer : ICustomer
 {
