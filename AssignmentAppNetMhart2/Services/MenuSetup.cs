@@ -23,6 +23,7 @@ public interface IMenuSetup
 
 public class MenuSetup : IMenuSetup
 {
+    private readonly ICustomerService _customerService = new CustomerService();
     public void ShowAddCustomer()
     {
         ICustomer customer = new Customer();
@@ -92,12 +93,41 @@ public class MenuSetup : IMenuSetup
     }
     public void ShowUpdateCustomerList()
     {
-        throw new NotImplementedException();
+        
     }
 
     public void ShowViewCustomerOption()
     {
-        throw new NotImplementedException();
+        ICustomer customer = new Customer();
+
+        DisplayMenuTitle("Add New Customer");
+
+        Console.WriteLine("First Name: ");
+        customer.FirstName = Console.ReadLine()!;
+
+        Console.WriteLine("Last Name: ");
+        customer.FirstName = Console.ReadLine()!;
+
+        Console.WriteLine("E-Mail: ");
+        customer.FirstName = Console.ReadLine()!;
+
+        var res = _customerService.AddCustomerToList(customer);
+
+        switch (res.Status)
+        {
+            case Enums.ServiceStatus.SUCCESSED:
+                Console.WriteLine("The customer was added successfully");
+                break;
+
+            case Enums.ServiceStatus.ALREADY_EXIST:
+                Console.WriteLine("The customer already exists");
+                break;
+
+            case Enums.ServiceStatus.FAILED:
+                Console.WriteLine("Failed when trying to add the customer to list.");
+                Console.WriteLine("See error message :: " + res.Result.ToString());
+        }       break;
+   
     }
 
 
