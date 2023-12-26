@@ -31,7 +31,30 @@ public class MenuSetup : IMenuSetup
 
     public void ShowCustomerDetailList()
     {
-        throw new NotImplementedException();
+        DisplayMenuTitle("Customer List");
+        var res = _customerService.GetCustomersToList();
+
+        if (res.Status == Enums.ServiceStatus.SUCCESSED)
+        {
+            if (res.Result is List<ICustomer> customerList)
+            {
+                if (!customerList.Any())
+                {
+                    Console.WriteLine("No customers found");
+
+                }
+                else 
+                { 
+              
+                    foreach (var customer in customerList)
+                    {
+                    Console.WriteLine($"{customer.FirstName} {customer.LastName} <{customer.Email}>");
+                    }
+                }
+            }
+        }
+       
+        DisplayPressAnyKey();
     }
 
     public void ShowDeleteCustomer()
@@ -130,6 +153,7 @@ public class MenuSetup : IMenuSetup
 
         }
 
+        DisplayPressAnyKey();
     }
 
 
@@ -139,6 +163,13 @@ public class MenuSetup : IMenuSetup
         Console.Clear();
         Console.WriteLine($"##{title}##");
         Console.WriteLine();
+    }
+
+    private void DisplayPressAnyKey ()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Press any key to countinue");
+        Console.ReadKey();
     }
 
 
