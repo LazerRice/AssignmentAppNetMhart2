@@ -126,8 +126,10 @@ public class MenuSetup : IMenuSetup
             case Enums.ServiceStatus.FAILED:
                 Console.WriteLine("Failed when trying to add the customer to list.");
                 Console.WriteLine("See error message :: " + res.Result.ToString());
-        }       break;
-   
+                break;
+
+        }
+
     }
 
 

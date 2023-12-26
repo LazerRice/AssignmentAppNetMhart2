@@ -4,31 +4,29 @@ using AssignmentAppNetMhart2.Models;
 using AssignmentAppNetMhart2.Responses;
 using AssignmentAppNetMhart2.Enums;
 
-
 namespace AssignmentAppNetMhart2.Services;
 
 
 public class CustomerService : ICustomerService
 {
     private static readonly List<ICustomer> _customer = [];
-
-    public IServiceResult AddCustomerToList(Customer customer)
+    public IServiceResult AddCustomerToList(ICustomer customer)
     {
         IServiceResult response = new ServiceResult();
 
         try
         {
-            if (!_customer.Any(x => x.Email == customer.Email)) 
+            if (!_customer.Any(x => x.Email == customer.Email))
             {
                 _customer.Add(customer);
                 response.Status = Enums.ServiceStatus.SUCCESSED;
             }
-            else 
+            else
             {
                 response.Status = Enums.ServiceStatus.ALREADY_EXIST;
             }
         }
-        catch (Exception ex) 
+        catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
             response.Status = Enums.ServiceStatus.FAILED;
@@ -38,7 +36,7 @@ public class CustomerService : ICustomerService
         return response;
     }
 
-    public ServiceResult DeleteCustomerToList(Func<Customer, bool> predicate)
+    public IServiceResult DeleteCustomerToList(Func<Customer, bool> predicate)
     {
         throw new NotImplementedException();
     }
@@ -62,12 +60,12 @@ public class CustomerService : ICustomerService
         return response;
     }
 
-    public ServiceResult GetCustomerToList(Func<Customer, bool> predicate)
+    public IServiceResult GetCustomerToList(Func<Customer, bool> predicate)
     {
         throw new NotImplementedException();
     }
 
-    public ServiceResult UpdateCustomerToList(Customer customer)
+    public IServiceResult UpdateCustomerToList(ICustomer customer)
     {
         throw new NotImplementedException();
     }
