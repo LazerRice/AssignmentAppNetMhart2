@@ -3,6 +3,7 @@ using AssignmentAppNetMhart2.Interfaces;
 using AssignmentAppNetMhart2.Models;
 using AssignmentAppNetMhart2.Responses;
 using AssignmentAppNetMhart2.Enums;
+using Newtonsoft.Json;
 
 namespace AssignmentAppNetMhart2.Services;
 
@@ -69,4 +70,38 @@ public class CustomerService : ICustomerService
     {
         throw new NotImplementedException();
     }
+
+    private readonly FileService _fileService = new FileService(@"C:\ESS\C#Sharp\contenct.json");
+
+    private List<Customer> _customerList = new List<Customer>();
+
+    public void AddCustomerToList(Customer customer)
+    {
+        try
+        {
+            if (!_customerList.Any(x => x.Email == customer.Email))
+            {
+                _customerList.Add(customer);
+
+                _fileService.SaveContenctToFile(JsonConvert.SerializeObject(_customerList));
+            }
+        }
+        catch (Exception ex){ Debug.WriteLine(ex.Message); }
+    }
+
+    public IEnumerable<Customer> GetCustomerToList()
+    {
+        try
+        {
+            var content = _fileService.GetContenctFile();
+            if (!string.IsNullOrEmpty(content)) 
+            {
+                _customerList = JsonConvert.DeserializeObject<List<Customer>>(content)!;
+            }
+        }
+        catch (Exception ex) { Debug.WriteLine(ex.Message); }
+
+        return _customerList;
+    }
+
 }
