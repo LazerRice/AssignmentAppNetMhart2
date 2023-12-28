@@ -16,8 +16,10 @@ public interface ICustomerService
     IServiceResult GetCustomersToList();
 
     IServiceResult UpdateCustomerToList(ICustomer customer);
+    bool AddToList(ICustomer customer);
 
-
+    IServiceResult AddToList();
+    IEnumerable<ICustomer> GetAllFromList();
 }
 
 //Func är en fuktion så man kan söka med Lambda.  (Jag tänker på Half-Life och CS 1.3 or 1.6 :D)

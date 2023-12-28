@@ -34,7 +34,7 @@ Console.WriteLine();
 
 Console.WriteLine("List 2");
 var list2  = customerService.GetCustomersToList();
-foreach (var customer in list2)
+foreach (var customer in list1)
 {
     Console.WriteLine($"{customer.FirstName} {customer.LastName} <{customer.Email}>");
 }
