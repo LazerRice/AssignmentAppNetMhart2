@@ -20,7 +20,7 @@ Console.WriteLine();
 Console.WriteLine("List 1 - Upgraded");
 
 
-customerService.AddCustomerToList(new AssignmentAppNetMhart2.Models.Customer)
+customerService.AddCustomerToList(new AssignmentAppNetMhart2.Models.Customer()
 
 foreach (var customer in list1)
 {
